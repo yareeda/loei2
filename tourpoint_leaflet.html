@@ -1,0 +1,265 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My leaflet map</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+    
+    <!-- W3 CSS template -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+   
+   <style>
+    #mapid {
+    height: 800px;
+    }
+    </style>
+
+</head>
+<body>
+    <!-- #แบ่งหน้าจอ -->
+    <div class="w3-row">
+        <div id="mapid" class="w3-half"></div>
+        <div id="content" class="w3-half">
+        <table class="w3-table w3-striped">
+        <tr>
+        <th>ชื่อแหล่งท่องเที่ยว</th>
+        <th>ประเภท</th>
+        <th>ระดับ</th>
+        </tr>
+        <tr>
+        <td>น้ำตก A</td>
+        <td>ธรรมชาติ</td>
+        <td>A</td>
+        </tr>
+        </table>
+        </div>
+        </div>
+<!-- link geojson file -->
+<script src = "tourpoint.js"></script>
+
+ <!--Map control -->
+<script>
+var map = L.map("mapid").setView([101.73260775038966,17.515497046804256], 8);
+ 
+ var osm = L.tileLayer(
+ "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+ ).addTo(map);
+ var gsat = L.tileLayer(
+ "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
+ ).addTo(map);
+ 
+//  การรวมญาติ
+ var baseMaps = {
+ OSM: osm,
+ GoogleSat: gsat,
+ };
+
+//  add data
+var tourpoint ={
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "วัดป่าห้วยลาด",
+        "type": "nature",
+        "level": 8
+      },
+      "geometry": {
+        "coordinates": [
+          101.41325300859745,
+          17.45054893624925
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "สวนหินผางาม",
+        "type": "nature",
+        "level": 5
+      },
+      "geometry": {
+        "coordinates": [
+          101.74346502953853,
+          17.050608749719757
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ถนนคนเดินเชียงคาน",
+        "type": "nature",
+        "level": 6
+      },
+      "geometry": {
+        "coordinates": [
+          101.65728900702476,
+          17.896634144817867
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "เชียงคาน",
+        "type": "nature",
+        "level": 8
+      },
+      "geometry": {
+        "coordinates": [
+          101.66149063558356,
+          17.895654985363294
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Phu Ruea",
+        "type": "nature",
+        "level": 9
+      },
+      "geometry": {
+        "coordinates": [
+          101.35736546144602,
+          17.45470136246378
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "อำเภอ นาแห้ว",
+        "type": "nature",
+        "level": 6
+      },
+      "geometry": {
+        "coordinates": [
+          101.07188082209035,
+          17.504965871984624
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "อำเภอ ภูกระดึง",
+        "type": "nature",
+        "level": 10
+      },
+      "geometry": {
+        "coordinates": [
+          101.87188272654083,
+          16.881403969742166
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ภูลมโล",
+        "type": "nature",
+        "level": 6
+      },
+      "geometry": {
+        "coordinates": [
+          101.07576822023765,
+          16.985484716737588
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ห้วยกระทิง",
+        "type": "nature",
+        "level": 8
+      },
+      "geometry": {
+        "coordinates": [
+          101.60331275428302,
+          17.502006048537154
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ภูทอก",
+        "type": "nature",
+        "level": 8
+      },
+      "geometry": {
+        "coordinates": [
+          101.68221205092613,
+          17.869554070198078
+        ],
+        "type": "Point"
+      }
+    }
+  ]
+}
+
+var tourLayer = L.geoJSON(tourpoint, {
+ pointToLayer: function (feature, latlng) {
+ return L.marker(latlng).bindPopup(feature.properties.name);
+ },
+ onEachFeature: function (feature, layer) {
+ layer.on("mouseover", function () {
+ document
+ .getElementById(feature.properties.name)
+ .classList.add("w3-red");
+ });
+ 
+ layer.on("mouseout", function () {
+ document
+ .getElementById(feature.properties.name)
+ .classList.remove("w3-red");
+ });
+ },
+ }).addTo(map);
+ 
+ var cont = "";
+ cont += "<table class='w3-table w3-striped'>";
+ cont += "<tr>";
+ cont += "<th>ชื่อแหล่งท่องเที่ยว</th>";
+ cont += "<th>ประเภท</th>";
+ cont += "<th>ระดับ</th>";
+ cont += "</tr>";
+ for (let i in tourpoint.features) {
+ cont += "<tr id=" + tourpoint.features[i].properties.name + ">";
+ cont += "<td>" + tourpoint.features[i].properties.name + "</td>";
+ cont += "<td>" + tourpoint.features[i].properties.type + "</td>";
+ cont += "<td>" + tourpoint.features[i].properties.level + "</td>";
+ cont += "</tr>";
+ }
+ cont += "</table>";
+ console.log(cont);
+ document.getElementById("content").innerHTML = cont;
+
+ var overlays = {สถานที่ท่องเที่ยว: tourLayer};
+ //add leyer control
+ L.control.layers(baseMaps, overlays).addTo(map);
+
+</script>
+</body>
+</html>
